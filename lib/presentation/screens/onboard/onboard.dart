@@ -23,11 +23,8 @@ class _OnBoardState extends State<OnBoard> {
             child: Column(
               children: [
                 //Logo
-                Image.asset(
-                  MyAssets.journoLogo,
-                  height: 42.h,
-                  width: 139.h,
-                  color: MyColors.primaryColor,
+                const AppLogo(
+                  logoColor: MyColors.primaryColor,
                 ),
                 63.h.heightBox,
                 //onBoard Content (Image+Description)
@@ -39,7 +36,12 @@ class _OnBoardState extends State<OnBoard> {
                   },
                 ).expand(),
                 //Get Started Button
-                const CustomButton(),
+                CustomButton(
+                  btnText: "Get Started",
+                  onTap: () {
+                    AutoRouter.of(context).replace(const AuthRoute());
+                  },
+                ),
                 61.h.heightBox,
                 //Botton Action bar section
                 Row(
