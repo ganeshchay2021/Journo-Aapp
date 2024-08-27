@@ -18,8 +18,10 @@ class OnBoardContent extends StatelessWidget {
           image,
           height: 333.h,
           width: 333.w,
+          fit: BoxFit.cover,
         ),
-       25.h.heightBox,
+
+        25.h.heightBox,
         //onBoard Description
         onBoardText.text
             .size(15.sp)

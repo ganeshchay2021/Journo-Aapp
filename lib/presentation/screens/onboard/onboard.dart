@@ -15,6 +15,7 @@ class _OnBoardState extends State<OnBoard> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: MyColors.white,
       body: SafeArea(
@@ -40,10 +41,8 @@ class _OnBoardState extends State<OnBoard> {
                   },
                 ).expand(),
                 //Get Started Button
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 61.h),
-                  child: const CustomButton(),
-                ),
+                const CustomButton(),
+                61.h.heightBox,
                 //Botton Action bar section
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
