@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i3;
-import 'package:jurney_blog_app/presentation/screens/onboard/onboard_imports.dart'
+import 'package:jurney_blog_app/presentation/screens/onboard/widgets/onboard_imports.dart'
     as _i1;
 import 'package:jurney_blog_app/presentation/screens/splash/splash_imports.dart'
     as _i2;

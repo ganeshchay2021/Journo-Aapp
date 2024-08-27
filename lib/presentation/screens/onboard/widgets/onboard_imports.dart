@@ -9,4 +9,4 @@ import 'package:jurney_blog_app/presentation/screens/onboard/widgets/onboard_vie
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-part 'onboard.dart';
+part '../onboard.dart';

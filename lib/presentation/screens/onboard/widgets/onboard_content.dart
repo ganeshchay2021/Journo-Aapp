@@ -1,4 +1,5 @@
 part of 'onboard_content_imports.dart';
+
 class OnBoardContent extends StatelessWidget {
   final String image;
   final String onBoardText;
@@ -20,7 +21,7 @@ class OnBoardContent extends StatelessWidget {
           fit: BoxFit.cover,
         ),
 
-        25.h.heightBox,
+        // .h.heightBox,
         //onBoard Description
         onBoardText.text
             .size(15.sp)

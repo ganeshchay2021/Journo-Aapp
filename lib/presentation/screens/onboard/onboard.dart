@@ -1,4 +1,4 @@
-part of 'onboard_imports.dart';
+part of 'widgets/onboard_imports.dart';
 
 @RoutePage()
 class OnBoard extends StatefulWidget {
@@ -9,13 +9,11 @@ class OnBoard extends StatefulWidget {
 }
 
 class _OnBoardState extends State<OnBoard> {
-
   //OnBoardModel Object Created
   OnboardViewModel onboardViewModel = OnboardViewModel();
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: MyColors.white,
       body: SafeArea(
@@ -54,15 +52,16 @@ class _OnBoardState extends State<OnBoard> {
                         .color(MyColors.primaryColor)
                         .make(),
                     SmoothPageIndicator(
-                        controller: onboardViewModel.pageController,
-                        count: onboardViewModel.onboardContent.length,
-                        axisDirection: Axis.horizontal,
-                        effect: WormEffect(
-                          dotColor: MyColors.dotColor,
-                          activeDotColor: MyColors.primaryColor,
-                          dotHeight: 10.h,
-                          dotWidth: 10.w,
-                        )),
+                      controller: onboardViewModel.pageController,
+                      count: onboardViewModel.onboardContent.length,
+                      axisDirection: Axis.horizontal,
+                      effect: WormEffect(
+                        dotColor: MyColors.dotColor,
+                        activeDotColor: MyColors.primaryColor,
+                        dotHeight: 10.h,
+                        dotWidth: 10.w,
+                      ),
+                    ),
                     "Next"
                         .text
                         .size(16.sp)
@@ -71,7 +70,7 @@ class _OnBoardState extends State<OnBoard> {
                         .make()
                   ],
                 ),
-                15.h.heightBox
+                10.h.heightBox
               ],
             ),
           ),

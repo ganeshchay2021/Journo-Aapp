@@ -50,7 +50,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   animation_wrappers: ^3.0.0
   device_preview: ^1.2.0
-
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
