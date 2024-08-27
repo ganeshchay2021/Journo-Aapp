@@ -36,8 +36,8 @@ class _SplashState extends State<Splash> {
           //Loog for Splash Screen
           child: Image.asset(
             MyAssets.journoLogo,
-            height: 42,
-            width: 139,
+            height: 42.h,
+            width: 139.w,
           ),
         ),
       ),

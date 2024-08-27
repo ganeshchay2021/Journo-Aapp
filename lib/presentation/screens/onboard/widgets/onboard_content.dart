@@ -1,5 +1,4 @@
 part of 'onboard_content_imports.dart';
-
 class OnBoardContent extends StatelessWidget {
   final String image;
   final String onBoardText;
