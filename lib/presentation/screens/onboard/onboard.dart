@@ -20,19 +20,17 @@ class _OnBoardState extends State<OnBoard> {
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.symmetric(horizontal: 24.w),
             child: Column(
               children: [
                 //Logo
                 Image.asset(
                   MyAssets.journoLogo,
-                  height: 42,
-                  width: 139,
+                  height: 42.h,
+                  width: 139.h,
                   color: MyColors.primaryColor,
                 ),
-                const SizedBox(
-                  height: 63,
-                ),
+                63.h.heightBox,
                 //onBoard Content (Image+Description)
                 PageView.builder(
                   controller: onboardViewModel.pageController,
@@ -42,9 +40,9 @@ class _OnBoardState extends State<OnBoard> {
                   },
                 ).expand(),
                 //Get Started Button
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 61),
-                  child: CustomButton(),
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: 61.h),
+                  child: const CustomButton(),
                 ),
                 //Botton Action bar section
                 Row(
@@ -52,7 +50,7 @@ class _OnBoardState extends State<OnBoard> {
                   children: [
                     "Skip"
                         .text
-                        .size(16)
+                        .size(16.sp)
                         .fontWeight(FontWeight.w700)
                         .color(MyColors.primaryColor)
                         .make(),
@@ -60,23 +58,21 @@ class _OnBoardState extends State<OnBoard> {
                         controller: onboardViewModel.pageController,
                         count: onboardViewModel.onboardContent.length,
                         axisDirection: Axis.horizontal,
-                        effect: const WormEffect(
+                        effect: WormEffect(
                           dotColor: MyColors.dotColor,
                           activeDotColor: MyColors.primaryColor,
-                          dotHeight: 10,
-                          dotWidth: 10,
+                          dotHeight: 10.h,
+                          dotWidth: 10.w,
                         )),
                     "Next"
                         .text
-                        .size(16)
+                        .size(16.sp)
                         .fontWeight(FontWeight.w700)
                         .color(MyColors.primaryColor)
                         .make()
                   ],
                 ),
-                const SizedBox(
-                  height: 15,
-                )
+                15.h.heightBox
               ],
             ),
           ),

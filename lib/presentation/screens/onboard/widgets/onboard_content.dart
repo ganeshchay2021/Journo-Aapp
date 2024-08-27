@@ -16,15 +16,13 @@ class OnBoardContent extends StatelessWidget {
         //onBoard Image
         Image.asset(
           image,
-          height: 333,
-          width: 333,
+          height: 333.h,
+          width: 333.w,
         ),
-        const SizedBox(
-          height: 25,
-        ),
+       25.h.heightBox,
         //onBoard Description
         onBoardText.text
-            .size(15)
+            .size(15.sp)
             .color(Colors.black)
             .align(TextAlign.center)
             .fontWeight(FontWeight.w500)

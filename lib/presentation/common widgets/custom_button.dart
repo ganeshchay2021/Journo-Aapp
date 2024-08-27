@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jurney_blog_app/core/constant/my_colors.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -13,15 +14,15 @@ class CustomButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: MyColors.primaryColor,
-        minimumSize: Size(MediaQuery.of(context).size.width, 44),
+        minimumSize: Size(MediaQuery.of(context).size.width, 44.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(11),
+          borderRadius: BorderRadius.circular(11.r),
         ),
       ),
       onPressed: () {},
       child: "Get Started"
           .text
-          .size(16)
+          .size(16.sp)
           .color(MyColors.white)
           .fontWeight(FontWeight.w700)
           .make(),

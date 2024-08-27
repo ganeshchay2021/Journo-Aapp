@@ -19,7 +19,9 @@ class _SplashState extends State<Splash> {
     await Future.delayed(
       const Duration(seconds: 4),
       () {
-        AutoRouter.of(context).push(const OnBoardRoute());
+        if (mounted) {
+          AutoRouter.of(context).replace(const OnBoardRoute());
+        }
       },
     );
   }
