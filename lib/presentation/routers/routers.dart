@@ -10,7 +10,7 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: SplashRoute.page, path: "/"),
         AutoRoute(page: OnBoardRoute.page),
         AutoRoute(page: AuthRoute.page),
-
-
+        AutoRoute(page: RegisterRoute.page),
+        AutoRoute(page: LoginRoute.page)
       ];
 }

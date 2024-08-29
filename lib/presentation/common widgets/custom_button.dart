@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          "Login"
+          btnText
               .text
               .size(16.sp)
               .color(MyColors.white)

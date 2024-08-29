@@ -6,6 +6,7 @@ class Auth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //background image
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -20,8 +21,11 @@ class Auth extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                //App Logo
                 const AppLogo().centered(),
                 const Spacer(),
+
+                //Auth Screen Destription
                 "Explore the world,\nBillions of Thoughts."
                     .text
                     .color(MyColors.white)
@@ -29,36 +33,50 @@ class Auth extends StatelessWidget {
                     .fontWeight(FontWeight.w700)
                     .make(),
                 20.h.heightBox,
+
+                //got to login button
                 CustomButton(
                   icon: Icons.arrow_forward,
-                  onTap: () {},
+                  onTap: () {
+                       AutoRouter.of(context).replace(const LoginRoute());
+                  },
                   btnText: "Login",
                 ),
                 12.h.heightBox,
+
+                //got to login sign up button
+
                 ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    minimumSize: Size(MediaQuery.of(context).size.width, 44.h),
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: MyColors.white),
-                      borderRadius: BorderRadius.circular(11.r),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width, 44.h),
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: MyColors.white),
+                        borderRadius: BorderRadius.circular(11.r),
+                      ),
                     ),
-                  ),
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      "Register"
-                      .text
-                      .size(16.sp)
-                      .color(MyColors.white)
-                      .fontWeight(FontWeight.w700)
-                      .make(),
-                      5.w.widthBox,
-                      Icon(Icons.arrow_forward_ios, color: MyColors.white, size: 20.w,)
-                    ],
-                  )
-                ),
+                    onPressed: () {
+                       AutoRouter.of(context).replace(const RegisterRoute());
+                    },
+                    //btn text and icon
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        "Register"
+                            .text
+                            .size(16.sp)
+                            .color(MyColors.white)
+                            .fontWeight(FontWeight.w700)
+                            .make(),
+                        5.w.widthBox,
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: MyColors.white,
+                          size: 20.w,
+                        )
+                      ],
+                    )),
                 45.h.heightBox
               ],
             ),

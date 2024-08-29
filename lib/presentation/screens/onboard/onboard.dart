@@ -53,6 +53,8 @@ class _OnBoardState extends State<OnBoard> {
                         .fontWeight(FontWeight.w700)
                         .color(MyColors.primaryColor)
                         .make(),
+                        
+                    //smooth page indicator
                     SmoothPageIndicator(
                       controller: onboardViewModel.pageController,
                       count: onboardViewModel.onboardContent.length,
