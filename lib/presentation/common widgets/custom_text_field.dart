@@ -5,7 +5,7 @@ import 'package:velocity_x/velocity_x.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final TextEditingController controller;
   final bool isPassword;
   final bool obsureText;
@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.hintText,
-    required this.icon,
+    this.icon,
     required this.controller,
     this.isPassword=false,
     this.obsureText=false,

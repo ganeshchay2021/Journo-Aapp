@@ -50,6 +50,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   animation_wrappers: ^3.0.0
   device_preview: ^1.2.0
+  email_validator: ^3.0.0
+  flutter_quill: ^10.5.2
   
 dev_dependencies:
   flutter_test:
