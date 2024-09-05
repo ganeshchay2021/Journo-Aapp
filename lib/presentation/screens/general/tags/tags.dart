@@ -10,7 +10,7 @@ class Tags extends StatefulWidget {
 class _TagsState extends State<Tags> {
   @override
   void initState() {
-    context.read<TagsCubit>().fechAllTags();
+    context.read<TagsBloc>().add(FetchAllTagsEvent());
     super.initState();
   }
   @override
@@ -37,25 +37,25 @@ class _TagsState extends State<Tags> {
         ],
       ),
       //body section
-      body: BlocBuilder<TagsCubit, TagsState>(
+      body: BlocBuilder<TagsBloc, CommonState>(
         builder: (context, state) {
-          if (state is TagsLoadingState) {
+          if (state is CommonLoadingState) {
             return const Center(
               child: CircularProgressIndicator(
                 color: MyColors.primaryColor,
               ),
             );
           }
-          if (state is TagsErrorState) {
+          if (state is CommonErrorState) {
             return Center(
               child: state.errorMsg.text.make(),
             );
           }
-          if (state is TagsSuccessState) {
+          if (state is CommonSuccessState) {
             return ListView.separated(
               
               itemBuilder: (context, index) {
-                final tagsData=state.tagsModel.tags![index];
+                final tagsData=state.blogData.tags![index];
                 //list of tags
                 return CardWidget(
                   name: "${tagsData.title}",
@@ -63,7 +63,7 @@ class _TagsState extends State<Tags> {
                 );
               },
               separatorBuilder: (context, index) => 10.h.heightBox,
-              itemCount: state.tagsModel.tags!.length,
+              itemCount: state.blogData.tags!.length,
             );
           }else{
             return const SizedBox();

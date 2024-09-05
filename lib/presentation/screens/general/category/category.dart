@@ -11,6 +11,12 @@ class Category extends StatefulWidget {
 
 class _CategoryState extends State<Category> {
   @override
+  void initState() {
+    context.read<CategoryBloc>().add(FetchAllCategoryEvent());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.white,
@@ -34,16 +40,37 @@ class _CategoryState extends State<Category> {
         ],
       ),
       //page section
-      body: ListView.separated(
-          itemBuilder: (context, index) {
-            //list of category
-            return CardWidget(
-              name: "Categories",
-              index: index,
+      body: BlocBuilder<CategoryBloc, CommonState>(
+        builder: (context, state) {
+          if (state is CommonLoadingState) {
+            return const Center(
+                child: CircularProgressIndicator(
+              color: MyColors.primaryColor,
+            ));
+          }
+
+          if (state is CommonErrorState) {
+            return Center(
+              child: state.errorMsg.text.make(),
             );
-          },
-          separatorBuilder: (context, index) => 10.h.heightBox,
-          itemCount: 15),
+          }
+          if (state is CommonSuccessState<CategoryModel>) {
+            return ListView.separated(
+                itemBuilder: (context, index) {
+                  final categoryData= state.blogData.categories![index];
+                  //list of category
+                  return CardWidget(
+                    name: "${categoryData.title}",
+                    index: index,
+                  );
+                },
+                separatorBuilder: (context, index) => 10.h.heightBox,
+                itemCount: state.blogData.categories!.length);
+          } else {
+            return const SizedBox();
+          }
+        },
+      ),
     );
   }
 }

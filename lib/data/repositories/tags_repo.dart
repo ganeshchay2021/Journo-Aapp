@@ -4,7 +4,6 @@ import '../data_sources/remote/api_client.dart';
 import '../data_sources/remote/api_endpoints_url.dart';
 
 class TagsRepo extends ApiClient {
-  TagsRepo();
 
   Future<Either<TagsModel, String>> getAllTags() async {
     try {
