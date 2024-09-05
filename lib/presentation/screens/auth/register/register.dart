@@ -12,6 +12,8 @@ class _RegisterState extends State<Register> {
   bool isSelected = false;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
@@ -53,6 +55,23 @@ class _RegisterState extends State<Register> {
                         .make()
                         .centered(),
                     50.h.heightBox,
+
+                    //Name Text field
+                    "Name".text.size(16).fontWeight(FontWeight.w500).make(),
+                    8.h.heightBox,
+                    CustomTextField(
+                        hintText: "Enter email address",
+                        icon: Icons.person,
+                        controller: nameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "Name is empty";
+                          }  else {
+                            return null;
+                          }
+                        },
+                        textInputType: TextInputType.emailAddress),
+                    20.h.heightBox,
 
                     //Emain Text field
                     "Email".text.size(16).fontWeight(FontWeight.w500).make(),
@@ -134,7 +153,7 @@ class _RegisterState extends State<Register> {
                                 AutoRouter.of(context)
                                     .replace(const LoginRoute());
                               },
-                            text: " Register",
+                            text: " Login",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: MyColors.primaryColor,

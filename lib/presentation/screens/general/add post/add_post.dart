@@ -16,6 +16,7 @@ class _AddPostState extends State<AddPost> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //app bar
       appBar: AppBar(
         title: "Add Post".text.white.make(),
         actions: [
@@ -28,10 +29,12 @@ class _AddPostState extends State<AddPost> {
           )
         ],
       ),
+      //page body section
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 18.w),
         child: Column(
           children: [
+            //image selection view section
             Container(
               height: MediaQuery.of(context).size.height * 0.35,
               decoration: const BoxDecoration(
@@ -41,6 +44,7 @@ class _AddPostState extends State<AddPost> {
                 ),
               ),
             ),
+            //title textfield
             VxTextField(
               controller: titleController,
               suffixColor: MyColors.primaryColor,
@@ -50,6 +54,7 @@ class _AddPostState extends State<AddPost> {
               borderType: VxTextFieldBorderType.roundLine,
               borderRadius: 10,
             ),
+            //description textfield 
             20.h.heightBox,
             VxTextField(
               suffixColor: MyColors.primaryColor,
@@ -62,6 +67,7 @@ class _AddPostState extends State<AddPost> {
               borderRadius: 10,
             ),
             20.h.heightBox,
+            //tag selection field
             Container(
               height: 60.h,
               decoration: BoxDecoration(
@@ -79,6 +85,7 @@ class _AddPostState extends State<AddPost> {
               ),
             ),
             20.h.heightBox,
+            //category selection field
             Container(
               height: 60.h,
               decoration: BoxDecoration(
@@ -96,6 +103,7 @@ class _AddPostState extends State<AddPost> {
                 ],
               ),
             ),
+            //Text Editing Toolbar
             QuillSimpleToolbar(
               controller: _controller,
               configurations: const QuillSimpleToolbarConfigurations(),

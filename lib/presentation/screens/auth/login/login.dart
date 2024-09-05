@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                     30.h.heightBox,
 
                     //bottom Text
-                    "Already have an account?"
+                    "Don't have an account?"
                         .richText
                         .size(14)
                         .color(MyColors.primaryColor)
@@ -152,7 +152,7 @@ class _LoginState extends State<Login> {
                                 AutoRouter.of(context)
                                     .replace(const RegisterRoute());
                               },
-                            text: " Login",
+                            text: " Register",
                             style: const TextStyle(
                                 fontSize: 14,
                                 color: MyColors.primaryColor,

@@ -9,6 +9,11 @@ class Tags extends StatefulWidget {
 
 class _TagsState extends State<Tags> {
   @override
+  void initState() {
+    context.read<TagsCubit>().fechAllTags();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.white,
@@ -32,16 +37,38 @@ class _TagsState extends State<Tags> {
         ],
       ),
       //body section
-      body: ListView.separated(
-        itemBuilder: (context, index) {
-          //list of tags
-          return CardWidget(
-            name: "Tags",
-            index: index,
-          );
+      body: BlocBuilder<TagsCubit, TagsState>(
+        builder: (context, state) {
+          if (state is TagsLoadingState) {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: MyColors.primaryColor,
+              ),
+            );
+          }
+          if (state is TagsErrorState) {
+            return Center(
+              child: state.errorMsg.text.make(),
+            );
+          }
+          if (state is TagsSuccessState) {
+            return ListView.separated(
+              
+              itemBuilder: (context, index) {
+                final tagsData=state.tagsModel.tags![index];
+                //list of tags
+                return CardWidget(
+                  name: "${tagsData.title}",
+                  index: index,
+                );
+              },
+              separatorBuilder: (context, index) => 10.h.heightBox,
+              itemCount: state.tagsModel.tags!.length,
+            );
+          }else{
+            return const SizedBox();
+          }
         },
-        separatorBuilder: (context, index) => 10.h.heightBox,
-        itemCount: 15,
       ),
     );
   }

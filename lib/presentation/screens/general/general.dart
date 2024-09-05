@@ -14,7 +14,9 @@ class _GeneralState extends State<General> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Main Page Section
       body: GeneralViewModel.pages[visit],
+      //Navigation Bar
       bottomNavigationBar: BottomBarCreative(
         items: GeneralViewModel.items,
         backgroundColor: Colors.grey.shade200,
