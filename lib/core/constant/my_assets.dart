@@ -7,6 +7,8 @@ class MyAssets{
   static const String authBackgroundImage="assets/images/Background Image.png";
    static const String netflixImage="assets/images/netflix.webp";
    static const String addImagePlaceholder="assets/images/addimage_placeholder.png";
+   static const String appLogo="assets/icons/blog_icon.jpg";
+
    
 }
 

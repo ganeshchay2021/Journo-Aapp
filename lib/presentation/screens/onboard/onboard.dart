@@ -38,7 +38,7 @@ class _OnBoardState extends State<OnBoard> {
                 //Get Started Button
                 CustomButton(
                   btnText: "Get Started",
-                  onTap: () {
+                  onTap: () async {
                     AutoRouter.of(context).replace(const AuthRoute());
                   },
                 ),

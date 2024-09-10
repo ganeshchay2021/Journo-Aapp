@@ -1,6 +1,6 @@
 sealed class CommonState {}
 
-final class CommonStateInitialState extends CommonState {}
+final class CommonInitialState extends CommonState {}
 
 final class CommonLoadingState extends CommonState {}
 

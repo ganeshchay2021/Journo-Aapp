@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:jurney_blog_app/core/constant/my_strings.dart';
 import 'package:jurney_blog_app/core/theme/app_theme.dart';
+import 'package:jurney_blog_app/data/repositories/auth_repo.dart';
 import 'package:jurney_blog_app/data/repositories/category_repo.dart';
 import 'package:jurney_blog_app/data/repositories/repository.dart';
 import 'package:jurney_blog_app/data/repositories/tags_repo.dart';
+import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/login_cubit.dart';
+import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/logout_cubit.dart';
 import 'package:jurney_blog_app/presentation/screens/general/category/bloc/category_bloc.dart';
 import 'package:jurney_blog_app/presentation/screens/general/tags/bloc/tags_bloc.dart';
 import 'presentation/routers/routers_imports.dart';
@@ -20,7 +23,8 @@ void main() {
   runApp(RepositoryProvider(
     create: (context) => Repository(
       tagsRepo: TagsRepo(),
-      categoryRepo: CategoryRepo()
+      categoryRepo: CategoryRepo(),
+      authRepo: AuthRepo()
     ),
     child: MyApp(),
   ));
@@ -48,6 +52,16 @@ class MyApp extends StatelessWidget {
               ),
               BlocProvider(
                 create: (context) => CategoryBloc(
+                  repository: context.read<Repository>(),
+                ),
+              ),
+                BlocProvider(
+                create: (context) => LoginCubit(
+                  repository: context.read<Repository>(),
+                ),
+              ),
+               BlocProvider(
+                create: (context) => LogoutCubit(
                   repository: context.read<Repository>(),
                 ),
               ),

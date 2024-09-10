@@ -8,7 +8,7 @@ class TagsBloc extends Bloc<TagsEvent, CommonState> {
   final Repository repository;
   TagsBloc(
     {required this.repository}
-  ) : super(CommonStateInitialState()) {
+  ) : super(CommonInitialState()) {
     on<FetchAllTagsEvent>((event, emit)async {
       emit(CommonLoadingState());
       final result = await repository.tagsRepo.getAllTags();

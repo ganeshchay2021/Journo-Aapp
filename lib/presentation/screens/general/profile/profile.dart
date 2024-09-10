@@ -8,121 +8,156 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      //app bar
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              FeatherIcons.logOut,
-              color: MyColors.white,
-            ).pOnly(
-              right: 10,
-            ),
-          ),
-        ],
+    return OverlayLoaderWithAppIcon(
+      circularProgressColor: MyColors.primaryColor,
+      isLoading: isLoading,
+      appIcon: const Icon(
+        FeatherIcons.loader,
+        color: MyColors.secondaryColor,
       ),
-      //page section
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            //My profile Heading
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.50,
-              decoration: const BoxDecoration(
-                color: MyColors.primaryColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
-                ),
-              ),
-              child: Column(
-                children: [
-                  //profile image
-                  const CircleAvatar(
-                    radius: 70,
-                    backgroundImage: AssetImage(MyAssets.netflixImage),
-                  ),
-                  10.h.heightBox,
-                  //user's name
-                  "Ganesh".text.bold.xl2.white.make(),
-                  //user gmail
-                  "ganeshchay2021@gmail.com".text.white.make(),
-                  20.h.heightBox,
-                  //About user
-                  "Ganesh Chaudhary AKA (Ganpat) is a software engineer who is more passionate about technology. His ambition towards technology is huge"
-                      .text
-                      .white
-                      .center
-                      .make()
-                      .pSymmetric(h: 20.w),
-                  30.h.heightBox,
-                  //user's no. of post, following and followers
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        //No.of Post
-                        Column(
-                          children: [
-                            "6".text.bold.xl3.white.make(),
-                            "Post".text.xl.white.make()
-                          ],
-                        ),
-                        //No.of Following
-                        Column(
-                          children: [
-                            "0".text.bold.xl3.white.make(),
-                            "Following".text.xl.white.make()
-                          ],
-                        ),
-                        //No.of Followers
-                        Column(
-                          children: [
-                            "0".text.bold.xl3.white.make(),
-                            "Followers".text.xl.white.make()
-                          ],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-            20.h.heightBox,
-            //list of users post
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  "My Posts".text.bold.xl2.make(),
-                  15.h.heightBox,
-                  //post list in grid view
-                  GridView.builder(
-                    padding: EdgeInsets.zero,
-                    itemCount: 6,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: .9,
-                            crossAxisSpacing: 10,
-                            mainAxisSpacing: 10),
-                    itemBuilder: (context, index) {
-                      return const MyPost();
-                    },
-                  ),
-                ],
+      child: Scaffold(
+        //app bar
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              onPressed: () async {
+                context.read<LogoutCubit>().userLogout();
+                // final data = await Utils.getToken();
+                // debugPrint("This is token: $data");
+              },
+              icon: const Icon(
+                FeatherIcons.logOut,
+                color: MyColors.white,
+              ).pOnly(
+                right: 10,
               ),
             ),
           ],
+        ),
+        //page section
+        body: SingleChildScrollView(
+          child: BlocListener<LogoutCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoadingState) {
+                setState(() {
+                  isLoading = true;
+                });
+              } else {
+                setState(() {
+                  isLoading = false;
+                });
+              }
+              if (state is CommonErrorState) {
+                VxToast.show(context,
+                    msg: state.errorMsg,
+                    bgColor: Colors.red,
+                    textColor: Colors.white);
+              }
+              if (state is CommonSuccessState<MessageModel>) {
+                AutoRouter.of(context).replace(const AuthRoute());
+              }
+            },
+            child: Column(
+              children: [
+                //My profile Heading
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.50,
+                  decoration: const BoxDecoration(
+                    color: MyColors.primaryColor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(30),
+                      bottomRight: Radius.circular(30),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      //profile image
+                      const CircleAvatar(
+                        radius: 70,
+                        backgroundImage: AssetImage(MyAssets.netflixImage),
+                      ),
+                      10.h.heightBox,
+                      //user's name
+                      "Ganesh".text.bold.xl2.white.make(),
+                      //user gmail
+                      "ganeshchay2021@gmail.com".text.white.make(),
+                      20.h.heightBox,
+                      //About user
+                      "Ganesh Chaudhary AKA (Ganpat) is a software engineer who is more passionate about technology. His ambition towards technology is huge"
+                          .text
+                          .white
+                          .center
+                          .make()
+                          .pSymmetric(h: 20.w),
+                      30.h.heightBox,
+                      //user's no. of post, following and followers
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 30.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //No.of Post
+                            Column(
+                              children: [
+                                "6".text.bold.xl3.white.make(),
+                                "Post".text.xl.white.make()
+                              ],
+                            ),
+                            //No.of Following
+                            Column(
+                              children: [
+                                "0".text.bold.xl3.white.make(),
+                                "Following".text.xl.white.make()
+                              ],
+                            ),
+                            //No.of Followers
+                            Column(
+                              children: [
+                                "0".text.bold.xl3.white.make(),
+                                "Followers".text.xl.white.make()
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                20.h.heightBox,
+                //list of users post
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      "My Posts".text.bold.xl2.make(),
+                      15.h.heightBox,
+                      //post list in grid view
+                      GridView.builder(
+                        padding: EdgeInsets.zero,
+                        itemCount: 6,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                childAspectRatio: .9,
+                                crossAxisSpacing: 10,
+                                mainAxisSpacing: 10),
+                        itemBuilder: (context, index) {
+                          return const MyPost();
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

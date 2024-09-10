@@ -26,6 +26,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VxTextField(
+      controller: controller,
       isPassword: isPassword,
       hintStyle: const TextStyle(color: Colors.grey),
       obscureText: obsureText,

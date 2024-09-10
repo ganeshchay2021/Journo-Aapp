@@ -53,6 +53,8 @@ dependencies:
   email_validator: ^3.0.0
   flutter_quill: ^10.5.2
   fpdart: ^1.1.0
+  overlay_loader_with_app_icon: ^0.0.4
+
   
 dev_dependencies:
   flutter_test:

@@ -7,7 +7,7 @@ import 'package:jurney_blog_app/presentation/state/common_state.dart';
 
 class CategoryBloc extends Bloc<CategoryEvent, CommonState> {
   final Repository repository;
-  CategoryBloc({required this.repository}) : super(CommonStateInitialState()) {
+  CategoryBloc({required this.repository}) : super(CommonInitialState()) {
     on<FetchAllCategoryEvent>((event, emit) async {
       emit(CommonLoadingState());
       final result = await repository.categoryRepo.getAllCategory();
