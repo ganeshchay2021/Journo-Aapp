@@ -43,10 +43,15 @@ class _CategoryState extends State<Category> {
       body: BlocBuilder<CategoryBloc, CommonState>(
         builder: (context, state) {
           if (state is CommonLoadingState) {
-            return const Center(
-                child: CircularProgressIndicator(
-              color: MyColors.primaryColor,
-            ));
+            return OverlayLoaderWithAppIcon(
+                circularProgressColor: MyColors.primaryColor,
+                isLoading: true,
+                appIcon: const Icon(
+                  FeatherIcons.loader,
+                  color: MyColors.secondaryColor,
+                ),
+                child: const SizedBox(),
+              );
           }
 
           if (state is CommonErrorState) {

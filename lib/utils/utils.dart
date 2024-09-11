@@ -4,8 +4,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Utils {
   static const String _token = "token";
-    static final token = getToken();
-
 
   //Login Manipulation
   static Future<void> loginManipulation(context) async {

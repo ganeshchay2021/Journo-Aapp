@@ -25,8 +25,6 @@ class _ProfileState extends State<Profile> {
             IconButton(
               onPressed: () async {
                 context.read<LogoutCubit>().userLogout();
-                // final data = await Utils.getToken();
-                // debugPrint("This is token: $data");
               },
               icon: const Icon(
                 FeatherIcons.logOut,
@@ -58,6 +56,10 @@ class _ProfileState extends State<Profile> {
               }
               if (state is CommonSuccessState<MessageModel>) {
                 AutoRouter.of(context).replace(const AuthRoute());
+                 VxToast.show(context,
+                    msg: state.blogData.message.toString(),
+                    bgColor: Colors.red,
+                    textColor: Colors.white);
               }
             },
             child: Column(

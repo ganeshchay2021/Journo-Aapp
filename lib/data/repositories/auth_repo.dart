@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:jurney_blog_app/data/data_sources/remote/api_endpoints_url.dart';
 import 'package:jurney_blog_app/data/models/message_model.dart';
@@ -33,7 +32,7 @@ class AuthRepo extends ApiClient {
     try {
       final response = await postRequest(path: ApiEndpointsUrl.logout);
       final tagsData = MessageModel.fromJson(response.data);
-      // await Utils.deleteToken();
+      Utils.deleteToken();
       return Left(tagsData);
     } on Exception catch (e) {
       return Right(e.toString());

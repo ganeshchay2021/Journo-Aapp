@@ -5,6 +5,7 @@ import 'package:jurney_blog_app/core/constant/my_strings.dart';
 import 'package:jurney_blog_app/core/theme/app_theme.dart';
 import 'package:jurney_blog_app/data/repositories/auth_repo.dart';
 import 'package:jurney_blog_app/data/repositories/category_repo.dart';
+import 'package:jurney_blog_app/data/repositories/home_repo.dart';
 import 'package:jurney_blog_app/data/repositories/repository.dart';
 import 'package:jurney_blog_app/data/repositories/tags_repo.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/login_cubit.dart';
@@ -24,7 +25,8 @@ void main() {
     create: (context) => Repository(
       tagsRepo: TagsRepo(),
       categoryRepo: CategoryRepo(),
-      authRepo: AuthRepo()
+      authRepo: AuthRepo(),
+      homeRepo: HomeRepo(),
     ),
     child: MyApp(),
   ));

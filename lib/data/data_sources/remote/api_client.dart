@@ -31,7 +31,10 @@ class ApiClient {
     var token = await Utils.getToken();
 
     final options = Options(
-      headers: {"Authorization": "Bearer $token"},
+      headers: {
+        "Authorization": "Bearer $token",  // Use the retrieved token
+        "Content-Type": "application/json", // Optional: Ensure the correct content type
+      },
     );
 
     try {

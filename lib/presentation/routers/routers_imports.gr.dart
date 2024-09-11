@@ -9,6 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:jurney_blog_app/presentation/screens/auth/login/widget/login_imports.dart'
     as _i4;
 import 'package:jurney_blog_app/presentation/screens/auth/register/widgets/register_imports.dart'
@@ -45,10 +46,17 @@ class AuthRoute extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.BlogDetails]
-class BlogDetailsRoute extends _i8.PageRouteInfo<void> {
-  const BlogDetailsRoute({List<_i8.PageRouteInfo>? children})
-      : super(
+class BlogDetailsRoute extends _i8.PageRouteInfo<BlogDetailsRouteArgs> {
+  BlogDetailsRoute({
+    _i9.Key? key,
+    required post,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           BlogDetailsRoute.name,
+          args: BlogDetailsRouteArgs(
+            key: key,
+            post: post,
+          ),
           initialChildren: children,
         );
 
@@ -57,9 +65,29 @@ class BlogDetailsRoute extends _i8.PageRouteInfo<void> {
   static _i8.PageInfo page = _i8.PageInfo(
     name,
     builder: (data) {
-      return const _i2.BlogDetails();
+      final args = data.argsAs<BlogDetailsRouteArgs>();
+      return _i2.BlogDetails(
+        key: args.key,
+        post: args.post,
+      );
     },
   );
+}
+
+class BlogDetailsRouteArgs {
+  const BlogDetailsRouteArgs({
+    this.key,
+    required this.post,
+  });
+
+  final _i9.Key? key;
+
+  final post;
+
+  @override
+  String toString() {
+    return 'BlogDetailsRouteArgs{key: $key, post: $post}';
+  }
 }
 
 /// generated route for
