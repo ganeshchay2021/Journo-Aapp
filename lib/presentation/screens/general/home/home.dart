@@ -95,7 +95,8 @@ class _HomeState extends State<Home> {
                                 homeModel: latestPost, index: index);
                           },
                           separatorBuilder: (context, index) => 10.h.heightBox,
-                          itemCount: state.data.popularPosts!.length)
+                          itemCount: state.data.popularPosts!.length),
+                          
                     ],
                   ).pSymmetric(h: 18.w)
                 ],

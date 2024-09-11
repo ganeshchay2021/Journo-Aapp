@@ -10,6 +10,7 @@ import 'package:jurney_blog_app/data/repositories/repository.dart';
 import 'package:jurney_blog_app/data/repositories/tags_repo.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/login_cubit.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/logout_cubit.dart';
+import 'package:jurney_blog_app/presentation/screens/auth/register/cubit/register_cubit.dart';
 import 'package:jurney_blog_app/presentation/screens/general/category/bloc/category_bloc.dart';
 import 'package:jurney_blog_app/presentation/screens/general/tags/bloc/tags_bloc.dart';
 import 'presentation/routers/routers_imports.dart';
@@ -64,6 +65,11 @@ class MyApp extends StatelessWidget {
               ),
                BlocProvider(
                 create: (context) => LogoutCubit(
+                  repository: context.read<Repository>(),
+                ),
+              ),
+               BlocProvider(
+                create: (context) => RegisterCubit(
                   repository: context.read<Repository>(),
                 ),
               ),
