@@ -18,6 +18,18 @@ class _LoginState extends State<Login> {
   final formKey = GlobalKey<FormState>();
 
   @override
+  void initState() {
+    initialization();
+    super.initState();
+  }
+
+  initialization() async {
+    final response = await Utils.getLoginCredential();
+    emailController.text = response.email;
+    passwordController.text = response.password;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.primaryColor,
@@ -188,11 +200,12 @@ class _LoginState extends State<Login> {
 
                           //Login button
                           CustomButton(
-                              onTap: (){
+                              onTap: () {
                                 if (formKey.currentState!.validate()) {
                                   context.read<LoginCubit>().userLogin(
                                       email: emailController.text,
-                                      password: passwordController.text);
+                                      password: passwordController.text,
+                                      rememberMe: isSelected);
                                 }
                               },
                               btnText: "Login"),

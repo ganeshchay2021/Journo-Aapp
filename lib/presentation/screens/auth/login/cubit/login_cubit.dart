@@ -9,10 +9,10 @@ class LoginCubit extends Cubit<CommonState> {
   final Repository repository;
   LoginCubit({required this.repository}) : super(CommonInitialState());
 
-  userLogin({required String email, required String password}) async {
+  userLogin({required String email, required String password, required bool rememberMe}) async {
     emit(CommonLoadingState());
     final result =
-        await repository.authRepo.userLogin(email: email, password: password);
+        await repository.authRepo.userLogin(email: email, password: password, rememberMe: rememberMe);
     result.fold(
       (data) => emit(CommonSuccessState<LoginModel>(blogData: data)),
       (error) => emit(

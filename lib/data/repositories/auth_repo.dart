@@ -8,11 +8,20 @@ import '../data_sources/remote/api_client.dart';
 
 class AuthRepo extends ApiClient {
   Future<Either<LoginModel, String>> userLogin(
-      {required String email, required String password}) async {
+      {required String email,
+      required String password,
+      required bool rememberMe}) async {
     Map body = {
       "email": email,
       "password": password,
     };
+
+    if (rememberMe) {
+      Utils.saveLoginCredential((
+        email: email,
+        password: password,
+      ));
+    }
 
     try {
       final response =
@@ -31,7 +40,8 @@ class AuthRepo extends ApiClient {
 
   Future<Either<MessageModel, String>> userLogout() async {
     try {
-      final response = await postRequest(path: ApiEndpointsUrl.logout, isTonenRequired: true);
+      final response = await postRequest(
+          path: ApiEndpointsUrl.logout, isTonenRequired: true);
       final tagsData = MessageModel.fromJson(response.data);
       Utils.deleteToken();
       return Left(tagsData);
@@ -63,6 +73,5 @@ class AuthRepo extends ApiClient {
     } on Exception catch (e) {
       return Right(e.toString());
     }
-    
   }
 }

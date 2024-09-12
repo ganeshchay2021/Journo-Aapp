@@ -33,9 +33,9 @@ class _ProfileState extends State<Profile> {
           actions: [
             IconButton(
               onPressed: () async {
-                var data = await Utils.getToken();
-                Vx.log(data);
-                // context.read<LogoutCubit>().userLogout();
+                // var data = await Utils.getToken();
+                // Vx.log(data);
+                context.read<LogoutCubit>().userLogout();
               },
               icon: const Icon(
                 FeatherIcons.logOut,
@@ -114,11 +114,20 @@ class _ProfileState extends State<Profile> {
                       child: Column(
                         children: [
                           //profile image
-                          CircleAvatar(
-                            radius: 70,
-                            backgroundImage: NetworkImage(
-                                state.data.userDetails!.profilePhotoUrl!),
+                          CachedNetworkImage(
+                            imageUrl: state.data.userDetails!.profilePhotoUrl
+                                .toString(),
+                            imageBuilder: (context, imageProvider) =>
+                                CircleAvatar(
+                                    radius: 70, backgroundImage: imageProvider),
+                            placeholder: (context, url) => const CircleAvatar(
+                              radius: 70,
+                              backgroundColor: Colors.grey,
+                            ),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
                           ),
+
                           10.h.heightBox,
                           //user's name
                           state.data.userDetails!.name!.text.bold.xl2.white
@@ -127,8 +136,10 @@ class _ProfileState extends State<Profile> {
                           state.data.userDetails!.email!.text.white.make(),
                           20.h.heightBox,
                           //About user
-                          // "Ganesh Chaudhary AKA (Ganpat) is a software engineer who is more passionate about technology. His ambition towards technology is huge"
-                          state.data.userDetails!.about!.text.white.center
+                          "${state.data.userDetails!.name} AKA (${state.data.userDetails!.name!.substring(0, 6)}) is a software engineer who is more passinate about technology. His ambition towards technology is huge"
+                              .text
+                              .white
+                              .center
                               .make()
                               .pSymmetric(h: 20.w),
                           30.h.heightBox,

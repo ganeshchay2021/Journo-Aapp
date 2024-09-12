@@ -11,6 +11,7 @@ import 'package:jurney_blog_app/presentation/common%20widgets/custom_button.dart
 import 'package:jurney_blog_app/presentation/routers/routers_imports.gr.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/widget/login_model.dart';
 import 'package:jurney_blog_app/presentation/state/common_state.dart';
+import 'package:jurney_blog_app/utils/utils.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:jurney_blog_app/data/repositories/repository.dart';
 

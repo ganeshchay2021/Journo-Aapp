@@ -66,16 +66,16 @@ class Post {
     });
 
     factory Post.fromJson(Map<String, dynamic> json) => Post(
-        id: json["id"],
-        userId: json["user_id"],
-        title: json["title"],
-        slug: json["slug"],
-        featuredimage: json["featuredimage"],
-        body: json["body"],
+        id: json["id"]??"",
+        userId: json["user_id"]??"",
+        title: json["title"]??"",
+        slug: json["slug"]??"",
+        featuredimage: json["featuredimage"]??"",
+        body: json["body"]??"",
         status: json["status"],
-        like: json["like"],
-        dislike: json["dislike"],
-        views: json["views"],
+        like: json["like"]??"",
+        dislike: json["dislike"]??"",
+        views: json["views"]??"",
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
     );
