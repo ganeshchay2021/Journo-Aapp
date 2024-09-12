@@ -7,5 +7,7 @@ class ApiEndpointsUrl{
   static const String register="register";
   static const String login="login";
   static const String logout="logout";
+  static const String userPost="user-posts";
+
 
 }

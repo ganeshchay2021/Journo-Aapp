@@ -1,4 +1,3 @@
-import 'package:animation_wrappers/animations/faded_scale_animation.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';

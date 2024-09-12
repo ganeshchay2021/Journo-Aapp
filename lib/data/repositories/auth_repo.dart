@@ -4,7 +4,6 @@ import 'package:jurney_blog_app/data/models/message_model.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/widget/login_model.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/register/widgets/register_model.dart';
 import 'package:jurney_blog_app/utils/utils.dart';
-import 'package:velocity_x/velocity_x.dart';
 import '../data_sources/remote/api_client.dart';
 
 class AuthRepo extends ApiClient {
@@ -32,7 +31,7 @@ class AuthRepo extends ApiClient {
 
   Future<Either<MessageModel, String>> userLogout() async {
     try {
-      final response = await postRequest(path: ApiEndpointsUrl.logout);
+      final response = await postRequest(path: ApiEndpointsUrl.logout, isTonenRequired: true);
       final tagsData = MessageModel.fromJson(response.data);
       Utils.deleteToken();
       return Left(tagsData);

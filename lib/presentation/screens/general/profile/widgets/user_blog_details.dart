@@ -1,18 +1,18 @@
-part of 'widgets/blog_details_imports.dart';
+part of 'widgets_imports.dart';
 
 @RoutePage()
-class BlogDetails extends StatefulWidget {
+class UserBlogDetails extends StatefulWidget {
   final Post post;
-  const BlogDetails({
+  const UserBlogDetails({
     super.key,
     required this.post,
   });
 
   @override
-  State<BlogDetails> createState() => _BlogDetailsState();
+  State<UserBlogDetails> createState() => _UserBlogDetailsState();
 }
 
-class _BlogDetailsState extends State<BlogDetails> {
+class _UserBlogDetailsState extends State<UserBlogDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +43,10 @@ class _BlogDetailsState extends State<BlogDetails> {
             Hero(
               tag: Key(widget.post.id.toString()),
               child: Image.network(
-                widget.post.featuredimage!,
+                widget.post.featuredimage!
+                    .toString()
+                    .prepend("https://techblog.codersangam.com/")
+                    .replaceAll("public", "storage"),
                 height: MediaQuery.of(context).size.height * 0.3,
                 width: double.infinity,
                 fit: BoxFit.cover,

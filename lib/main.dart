@@ -6,6 +6,7 @@ import 'package:jurney_blog_app/core/theme/app_theme.dart';
 import 'package:jurney_blog_app/data/repositories/auth_repo.dart';
 import 'package:jurney_blog_app/data/repositories/category_repo.dart';
 import 'package:jurney_blog_app/data/repositories/home_repo.dart';
+import 'package:jurney_blog_app/data/repositories/profile_repo.dart';
 import 'package:jurney_blog_app/data/repositories/repository.dart';
 import 'package:jurney_blog_app/data/repositories/tags_repo.dart';
 import 'package:jurney_blog_app/presentation/screens/auth/login/cubit/login_cubit.dart';
@@ -28,6 +29,7 @@ void main() {
       categoryRepo: CategoryRepo(),
       authRepo: AuthRepo(),
       homeRepo: HomeRepo(),
+      profileRepo: ProfileRepo(),
     ),
     child: MyApp(),
   ));
@@ -58,17 +60,17 @@ class MyApp extends StatelessWidget {
                   repository: context.read<Repository>(),
                 ),
               ),
-                BlocProvider(
+              BlocProvider(
                 create: (context) => LoginCubit(
                   repository: context.read<Repository>(),
                 ),
               ),
-               BlocProvider(
+              BlocProvider(
                 create: (context) => LogoutCubit(
                   repository: context.read<Repository>(),
                 ),
               ),
-               BlocProvider(
+              BlocProvider(
                 create: (context) => RegisterCubit(
                   repository: context.read<Repository>(),
                 ),

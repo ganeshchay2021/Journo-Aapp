@@ -12,10 +12,23 @@ class ApiClient {
     dio = Dio(baseOptions);
   }
 
+  Options options = Options();
+
   /// GET REQUEST
-  Future<Response> getRequest({required String path}) async {
+  Future<Response> getRequest({required String path, bool isTonenRequired=false}) async {
+    if (isTonenRequired == true) {
+      var token = await Utils.getToken();
+
+      // Merge headers
+      final headers = {
+        ...baseOptions.headers,
+        "Authorization": "Bearer $token",
+      };
+
+      options = options.copyWith(headers: headers);
+    }
     try {
-      final response = await dio.get(path);
+      final response = await dio.get(path, options: options);
       return response;
     } on DioException catch (e) {
       if (e.response != null) {
@@ -27,15 +40,22 @@ class ApiClient {
   }
 
   /// POST REQUEST
-  Future<Response> postRequest({required String path, dynamic body}) async {
-    var token = await Utils.getToken();
+  Future<Response> postRequest({
+    required String path,
+    dynamic body,
+    bool isTonenRequired = false,
+  }) async {
+    if (isTonenRequired == true) {
+      var token = await Utils.getToken();
 
-    final options = Options(
-      headers: {
-        "Authorization": "Bearer $token",  // Use the retrieved token
-        "Content-Type": "application/json", // Optional: Ensure the correct content type
-      },
-    );
+      // Merge headers
+      final headers = {
+        ...baseOptions.headers,
+        "Authorization": "Bearer $token",
+      };
+
+      options = options.copyWith(headers: headers);
+    }
 
     try {
       final response = await dio.post(path, data: body, options: options);
