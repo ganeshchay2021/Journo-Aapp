@@ -43,9 +43,9 @@ class ApiClient {
   Future<Response> postRequest({
     required String path,
     dynamic body,
-    bool isTonenRequired = false,
+    bool isTokenRequired = false,
   }) async {
-    if (isTonenRequired == true) {
+    if (isTokenRequired == true) {
       var token = await Utils.getToken();
 
       // Merge headers

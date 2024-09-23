@@ -33,9 +33,9 @@ class _ProfileState extends State<Profile> {
           actions: [
             IconButton(
               onPressed: () async {
-                // var data = await Utils.getToken();
-                // Vx.log(data);
-                context.read<LogoutCubit>().userLogout();
+                var data = await Utils.getToken();
+                Vx.log(data);
+                // context.read<LogoutCubit>().userLogout();
               },
               icon: const Icon(
                 FeatherIcons.logOut,

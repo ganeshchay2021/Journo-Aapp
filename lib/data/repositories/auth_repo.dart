@@ -41,7 +41,7 @@ class AuthRepo extends ApiClient {
   Future<Either<MessageModel, String>> userLogout() async {
     try {
       final response = await postRequest(
-          path: ApiEndpointsUrl.logout, isTonenRequired: true);
+          path: ApiEndpointsUrl.logout, isTokenRequired: true);
       final tagsData = MessageModel.fromJson(response.data);
       Utils.deleteToken();
       return Left(tagsData);

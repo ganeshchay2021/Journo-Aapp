@@ -1,13 +1,12 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-part of 'widgets_imports.dart';
+part of 'tags_imports.dart';
 
-class CategoryCardWidget extends StatelessWidget {
+class TagsCardWidgets extends StatelessWidget {
   final int index;
   final String name;
   final String id;
   final String slug;
 
-  const CategoryCardWidget({
+  const TagsCardWidgets({
     super.key,
     required this.index,
     required this.name,
@@ -32,7 +31,7 @@ class CategoryCardWidget extends StatelessWidget {
               IconButton(
                 onPressed: () {
                   AutoRouter.of(context).push(
-                      UpdateCategoryRoute(id: id, title: name, slug: slug));
+                      UpdateTagsRoute(id: id, title: name, slug: slug));
                 },
                 icon: const Icon(
                   Icons.edit,
@@ -42,7 +41,7 @@ class CategoryCardWidget extends StatelessWidget {
               10.w.widthBox,
               IconButton(
                 onPressed: () {
-                  context.read<CategoryBloc>().add(DeleteCategoryEvent(id: id));
+                  context.read<TagsBloc>().add(DeleteTagsEvent(id: id));
                 },
                 icon: const Icon(
                   Icons.delete,

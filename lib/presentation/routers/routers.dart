@@ -15,6 +15,10 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: GeneralRoute.page),
         AutoRoute(page: BlogDetailsRoute.page),
         AutoRoute(page: UserBlogDetailsRoute.page),
+        AutoRoute(page: AddCategoryRoute.page),
+        AutoRoute(page: UpdateCategoryRoute.page),
+        AutoRoute(page: AddTagsRoute.page),
+        AutoRoute(page: UpdateTagsRoute.page)
 
       ];
 }
